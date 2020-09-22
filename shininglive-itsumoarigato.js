@@ -7,6 +7,11 @@ const user_input_field = [
 	'song_title1', 'song_title2', 'song_title3', 'song_title4', 'song_title5', 'song_title6', 'song_title7',
 	'row1_0', 'row2_0', 'row3_0', 'row4_0', 'row5_0', 'row6_0', 'row7_0'
 ];
+const important_element = [
+	'row1_', 'row2_', 'row3_', 'row4_', 'row5_', 'row6_', 'row7_',
+	'get_point_', 'cost_', 'eff_', 'last_round_', 'last_lp_',
+	'need_item_', 'ave_round_type1_', 'ave_round_type2_', 'ave_round_type3_'
+];
 
 window.onload = function(){
 	init();
@@ -81,6 +86,8 @@ function calcPointEfficiency(){
 }
 
 function calcOthers(){
+	var best_efficiency = 0;
+	var best_boost = 0;
 	// 一周獲得ポイント, 一周消費LP
 	for(var boost=0;boost<=song_count;boost++){
 		// 一周獲得ポイント
@@ -102,7 +109,14 @@ function calcOthers(){
 		document.getElementById('cost_'+boost).innerHTML = lp;
 
 		// 効率(合計pt/LP)
-		document.getElementById('eff_'+boost).innerHTML = Math.round(point/lp*1000)/1000;
+		var eff = Math.round(point/lp*1000)/1000;
+		document.getElementById('eff_'+boost).innerHTML = eff;
+
+		// 最高効率 確認
+		if(best_efficiency <= eff){
+			best_boost = boost;
+			best_efficiency = eff;
+		}
 
 		var point_last = parseInt(document.getElementById('point_last').innerHTML);
 		// 必要残り周回数
@@ -126,6 +140,19 @@ function calcOthers(){
 			}
 			document.getElementById('ave_round_type'+i+'_'+boost).innerHTML = tmp;
 			last_days -= 1;
+		}
+	}
+
+	// 最高効率の列全体の文字色を赤にする
+	var count = important_element.length;
+	for(boost=0;boost<=song_count;boost++){
+		var color = 'black';
+		if(boost === best_boost){
+			color = 'red';
+		}
+		for(var i=0;i<count;i++){
+			var element = document.getElementById(important_element[i]+boost);
+			element.style.color = color;
 		}
 	}
 }
