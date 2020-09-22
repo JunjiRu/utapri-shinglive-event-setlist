@@ -1,0 +1,152 @@
+<html>
+	<head>
+		<title>setlist event</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="./shininglive-itsumoarigato.js"></script>
+		<style>
+			div, table, span, input{
+				font-size: 13px;
+			}
+			input.datetime {
+				width: 110px;
+			}
+			input.song_title {
+				width: 110px;
+			}
+			input.score_total {
+				width: 65px;
+			}
+			input.score {
+				width: 55px;
+			}
+			table.point_table {
+				margin-top: 20px;
+				margin-bottom: 15px;
+			}
+			table.point_table, table.point_table tr td{
+				border: solid 1px #999999;
+				border-collapse: collapse;
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>目標ポイント:</td>
+				<td><input id="point_target" class="score_total" value="250000" type="text" onChange="calcLastPoint()"></td>
+				<td>目標まで残り:</td><td><span id="point_last"></span>pt</td>
+			</tr>
+			<tr>
+				<td>現在のポイント:</td>
+				<td colspan="3"><input id="point_current" class="score_total" value="230000" type="text" onChange="calcLastPoint()"></td>
+			</tr>
+			<tr>
+				<td>現在の日時:</td>
+				<td colspan="2">
+					<span id="datetime_current"></span>
+					<input type="button" value="時間更新" onClick="setCurrentDatetime();">
+				</td>
+				<td >
+					<input id="score_divine_target" class="score" type="text" value="" placeholder="数値入力" onChange="setDivinedValue();">
+					<input id="score_divine_result" class="score" type="text" value="" placeholder="1/3表示" disabled>
+				</td>
+			</tr>
+			<tr>
+				<td>イベント終了日時:</td>
+				<td colspan="3">
+					<input id="datetime_end" class="datetime" type="text" value="2020/09/29 14:00" onChange="calcLastTime(false);">
+					<input type="button" value="7日後の日付を設定" onClick="setEndDatetime();">
+				</td>
+			</tr>
+			<tr>
+				<td>残り時間:</td><td id="last_time" colspan="3"></td>
+			</tr>
+			<tr>
+				<td>自然回復LP:</td><td colspan="3"><span id="last_recovery_lp"></span> LP</td>
+			</tr>
+		</table>
+
+		<table class="point_table">
+			<tr>
+				<td colspan="9">最高効率は全体が赤くなります</td>
+			</tr>
+			<tr>
+				<td>ミッション加点</td><td colspan="8"><input id="point_mission" class="score" value="500" type="text"></td>
+			</tr>
+			<tr>
+				<td>クリア加点</td><td colspan="8"><input id="point_clear" class="score" value="500" type="text" disabled></td>
+			</tr>
+			<tr>
+				<td>ブースト曲数</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+			</tr>
+			<tr>
+				<td><input id="song_title1" class="song_title" type="text" placeholder="1曲目タイトル"></td>
+				<td><input id="row1_0" class="score" value="600" type="text" onChange="calcPointEfficiency();"></td>
+				<td id="row1_1"></td><td id="row1_2"></td><td id="row1_3"></td><td id="row1_4"></td><td id="row1_5"></td><td id="row1_6"></td><td id="row1_7"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title2" class="song_title" type="text" placeholder="2曲目タイトル"></td>
+				<td><input id="row2_0" class="score" value="700" type="text" onChange="calcPointEfficiency();"></td>
+				<td id="row2_1"></td><td id="row2_2"></td><td id="row2_3"></td><td id="row2_4"></td><td id="row2_5"></td><td id="row2_6"></td><td id="row2_7"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title3" class="song_title" type="text" placeholder="3曲目タイトル"></td>
+				<td><input id="row3_0" class="score" value="800" type="text" onChange="calcPointEfficiency();"></td>
+				<td id="row3_1"></td><td id="row3_2"></td><td id="row3_3"></td><td id="row3_4"></td><td id="row3_5"></td><td id="row3_6"></td><td id="row3_7"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title4" class="song_title" type="text" placeholder="4曲目タイトル"></td>
+				<td><input id="row4_0" class="score" value="900" type="text" onChange="calcPointEfficiency();"></td>
+				<td id="row4_1"></td><td id="row4_2"></td><td id="row4_3"></td><td id="row4_4"></td><td id="row4_5"></td><td id="row4_6"></td><td id="row4_7"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title5" class="song_title" type="text" placeholder="5曲目タイトル"></td>
+				<td><input id="row5_0" class="score" value="1000" type="text" onChange="calcPointEfficiency();"></td>
+				<td id="row5_1"></td><td id="row5_2"></td><td id="row5_3"></td><td id="row5_4"></td><td id="row5_5"></td><td id="row5_6"></td><td id="row5_7"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title6" class="song_title" type="text" placeholder="6曲目タイトル"></td>
+				<td><input id="row6_0" class="score" value="1100" type="text" onChange="calcPointEfficiency();"></td>
+				<td id="row6_1"></td><td id="row6_2"></td><td id="row6_3"></td><td id="row6_4"></td><td id="row6_5"></td><td id="row6_6"></td><td id="row6_7"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title7" class="song_title" type="text" placeholder="7曲目タイトル"></td>
+				<td><input id="row7_0" class="score" value="1200" type="text" onChange="calcPointEfficiency();"></td>
+				<td id="row7_1"></td><td id="row7_2"></td><td id="row7_3"></td><td id="row7_4"></td><td id="row7_5"></td><td id="row7_6"></td><td id="row7_7"></td>
+			</tr>
+			<tr>
+				<td>一周獲得pt</td><td id="get_point_0"></td><td id="get_point_1"></td><td id="get_point_2"></td><td id="get_point_3"></td><td id="get_point_4"></td><td id="get_point_5"></td><td id="get_point_6"></td><td id="get_point_7"></td>
+			</tr>
+			<tr>
+				<td>一周消費LP</td><td id="cost_0"></td><td id="cost_1"></td><td id="cost_2"></td><td id="cost_3"></td><td id="cost_4"></td><td id="cost_5"></td><td id="cost_6"></td><td id="cost_7"></td>
+			</tr>
+			<tr>
+				<td>効率(合計pt/LP)</td><td id="eff_0"></td><td id="eff_1"></td><td id="eff_2"></td><td id="eff_3"></td><td id="eff_4"></td><td id="eff_5"></td><td id="eff_6"></td><td id="eff_7"></td>
+			</tr>
+			<tr>
+				<td>必要残り周回数</td><td id="last_round_0"></td><td id="last_round_1"></td><td id="last_round_2"></td><td id="last_round_3"></td><td id="last_round_4"></td><td id="last_round_5"></td><td id="last_round_6"></td><td id="last_round_7"></td>
+			</tr>
+			<tr>
+				<td>必要LP(概算)</td><td id="last_lp_0"></td><td id="last_lp_1"></td><td id="last_lp_2"></td><td id="last_lp_3"></td><td id="last_lp_4"></td><td id="last_lp_5"></td><td id="last_lp_6"></td><td id="last_lp_7"></td>
+			</tr>
+			<tr>
+				<td>要アイテム回復</td><td id="need_item_0"></td><td id="need_item_1"></td><td id="need_item_2"></td><td id="need_item_3"></td><td id="need_item_4"></td><td id="need_item_5"></td><td id="need_item_6"></td><td id="need_item_7"></td>
+			</tr>
+			<tr>
+				<td>今日から平均周回</td><td id="ave_round_type1_0"></td><td id="ave_round_type1_1"></td><td id="ave_round_type1_2"></td><td id="ave_round_type1_3"></td><td id="ave_round_type1_4"></td><td id="ave_round_type1_5"></td><td id="ave_round_type1_6"></td><td id="ave_round_type1_7"></td>
+			</tr>
+			<tr>
+				<td>明日から平均周回</td><td id="ave_round_type2_0"></td><td id="ave_round_type2_1"></td><td id="ave_round_type2_2"></td><td id="ave_round_type2_3"></td><td id="ave_round_type2_4"></td><td id="ave_round_type2_5"></td><td id="ave_round_type2_6"></td><td id="ave_round_type2_7"></td>
+			</tr>
+			<tr>
+				<td>明後日から平均周回</td><td id="ave_round_type3_0"></td><td id="ave_round_type3_1"></td><td id="ave_round_type3_2"></td><td id="ave_round_type3_3"></td><td id="ave_round_type3_4"></td><td id="ave_round_type3_5"></td><td id="ave_round_type3_6"></td><td id="ave_round_type3_7"></td>
+			</tr>
+		</table>
+		<input type="button" value="保存用テキスト出力" onClick="get_state_text();">
+		<input type="button" value="保存用テキストから入力" onClick="set_state_text();">
+		<input type="button" value="保存用テキストをクリップボードへコピー" onClick="copy_state_text();"><br>
+		<textarea id="state_text" rows="4" cols="40"></textarea>
+	</body>
+</html>
