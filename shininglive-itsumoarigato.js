@@ -9,8 +9,7 @@ const user_input_field = [
 ];
 const important_element = [
 	'row1_', 'row2_', 'row3_', 'row4_', 'row5_', 'row6_', 'row7_',
-	'get_point_', 'cost_', 'eff_', 'last_round_', 'last_lp_',
-	'need_item_', 'ave_round_type1_', 'ave_round_type2_', 'ave_round_type3_'
+	'cost_', 'eff_', 'last_lp_', 'need_item_', 'ave_round_type3_'
 ];
 
 window.onload = function(){
@@ -63,9 +62,10 @@ function calcLastTime(get_last_days){
 	document.getElementById('last_recovery_lp').innerHTML = Math.floor(mins / lp_recovery_duration);
 }
 
-function setDivinedValue(){
-	var value = document.getElementById('score_divine_target').value;
-	document.getElementById('score_divine_result').value = Math.floor(value / max_boost_magnification);
+function setDividedValue(id){
+	var value = document.getElementById(id).value;
+	document.getElementById(id).value = Math.floor(value / max_boost_magnification);
+	calcPointEfficiency();
 }
 
 function calcPointEfficiency(){
