@@ -247,6 +247,6 @@ function log_access(){
 		xmlHttpRequest.send(JSON.stringify(data));
 	}catch (e){
 		alert("新しく開くタブでエラー画面が出ますが、内容を確認して白い画面を表示してください。その後、この画面を再読み込みしてください。");
-		window.open('https://www4078uo.sakura.ne.jp/shining_live_api/api.php');
+		window.open('https://www4078uo.sakura.ne.jp/shining_live_api/api.php', 'newtab');
 	}
 }
