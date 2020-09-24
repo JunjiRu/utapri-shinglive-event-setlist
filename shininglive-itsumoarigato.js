@@ -195,11 +195,12 @@ function set_save_data_api(){
 
 	var xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = function(){
-        alert(this.responseText);
+        if(this.responseText){
+			alert(this.responseText);
+		}
 	};
 	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
 	xmlHttpRequest.send(JSON.stringify(data));
-
 }
 
 function get_save_data_api(){
