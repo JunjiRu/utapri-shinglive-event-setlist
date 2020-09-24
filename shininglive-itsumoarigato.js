@@ -199,7 +199,7 @@ function set_save_data_api(){
 			alert(this.responseText);
 		}
 	};
-	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+	xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
 	xmlHttpRequest.send(JSON.stringify(data));
 }
 
@@ -216,7 +216,7 @@ function get_save_data_api(){
 		document.getElementById('state_text').value = this.responseText;
 		set_state_text();
 	};
-	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+	xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
 	xmlHttpRequest.send(JSON.stringify(data));
 }
 
@@ -232,7 +232,7 @@ function get_song_title(){
 			document.getElementById('song_title'+i).value = json[i-1]['song_title'];
 		}
 	};
-	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+	xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
 	xmlHttpRequest.send(JSON.stringify(data));
 }
 
@@ -241,7 +241,13 @@ function log_access(){
 		'type': 'access'
 	};
 
-	var xmlHttpRequest = new XMLHttpRequest();
-	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
-	xmlHttpRequest.send(JSON.stringify(data));
+	try{
+		var xmlHttpRequest = new XMLHttpRequest();
+		xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+		xmlHttpRequest.send(JSON.stringify(data));
+	}catch (e){
+		alert('新しく開くタブで　www4078uo.sakura.ne.jp にアクセスする（安全ではありません） を押してください');
+		window.open('https://www4078uo.sakura.ne.jp/shining_live_api/api.php');
+		location.reload();
+	}
 }
