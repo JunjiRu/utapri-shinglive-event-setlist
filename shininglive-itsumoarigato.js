@@ -13,6 +13,7 @@ const important_element = [
 ];
 
 window.onload = function(){
+	log_access();
 	init();
 };
 
@@ -181,4 +182,65 @@ function copy_state_text(){
 	var textarea = document.getElementById("state_text");
 	textarea.select();
 	document.execCommand("copy");
+}
+
+function set_save_data_api(){
+	get_state_text();
+	var data = {
+		'type': 'set',
+		'name': document.getElementById('db_name').value,
+		'pass': document.getElementById('db_pass').value,
+		'json': document.getElementById('state_text').value
+	};
+
+	var xmlHttpRequest = new XMLHttpRequest();
+	xmlHttpRequest.onreadystatechange = function(){
+        alert(this.responseText);
+	};
+	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+	xmlHttpRequest.send(JSON.stringify(data));
+
+}
+
+function get_save_data_api(){
+	var data = {
+		'type': 'get',
+		'name': document.getElementById('db_name').value,
+		'pass': document.getElementById('db_pass').value,
+		'json': 'dummy'
+	};
+
+	var xmlHttpRequest = new XMLHttpRequest();
+	xmlHttpRequest.onreadystatechange = function(){
+		document.getElementById('state_text').value = this.responseText;
+		set_state_text();
+	};
+	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+	xmlHttpRequest.send(JSON.stringify(data));
+}
+
+function get_song_title(){
+	var data = {
+		'type': 'get_songs'
+	};
+
+	var xmlHttpRequest = new XMLHttpRequest();
+	xmlHttpRequest.onreadystatechange = function(){
+		var json = JSON.parse(this.responseText);
+		for(var i=1;i<=song_count;i++){
+			document.getElementById('song_title'+i).value = json[i-1]['song_title'];
+		}
+	};
+	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+	xmlHttpRequest.send(JSON.stringify(data));
+}
+
+function log_access(){
+	var data = {
+		'type': 'access'
+	};
+
+	var xmlHttpRequest = new XMLHttpRequest();
+	xmlHttpRequest.open('POST', 'http://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+	xmlHttpRequest.send(JSON.stringify(data));
 }

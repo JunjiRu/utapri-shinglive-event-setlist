@@ -69,7 +69,8 @@
 
 		<table class="point_table">
 			<tr>
-				<td colspan="9">最高効率は全体が赤くなります</td>
+				<td><input type="button" value="曲名自動入力" onClick="get_song_title();"></td>
+				<td colspan="8">最高効率は全体が赤くなります</td>
 			</tr>
 			<tr>
 				<td>ミッション加点</td><td colspan="8"><input id="point_mission" class="score" value="450" type="text"></td>
@@ -164,9 +165,17 @@
 				<td>明後日から平均周回</td><td id="ave_round_type3_0"></td><td id="ave_round_type3_1"></td><td id="ave_round_type3_2"></td><td id="ave_round_type3_3"></td><td id="ave_round_type3_4"></td><td id="ave_round_type3_5"></td><td id="ave_round_type3_6"></td><td id="ave_round_type3_7"></td>
 			</tr>
 		</table>
+
+		<br>
+		保存用テキストを保管して再読み込みすることでデータを復元できます。<br>
 		<input type="button" value="保存用テキスト出力" onClick="get_state_text();">
 		<input type="button" value="保存用テキストから入力" onClick="set_state_text();">
 		<input type="button" value="保存用テキストをクリップボードへコピー" onClick="copy_state_text();"><br>
-		<textarea id="state_text" rows="4" cols="40"></textarea>
+		<textarea id="state_text" rows="4" cols="40"></textarea><br><br>
+		名前, パスワードを設定して、内容を保存、取得できます。<br>
+		<input id="db_name" type="text" placeholder="名前">&nbsp;
+		<input id="db_pass" type="text" placeholder="パスワード"><br>
+		<input type="button" value="保存" onClick="set_save_data_api();">&nbsp;
+		<input type="button" value="取得" onClick="get_save_data_api();"><br>
 	</body>
 </html>
