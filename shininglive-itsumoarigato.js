@@ -246,8 +246,7 @@ function log_access(){
 		xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
 		xmlHttpRequest.send(JSON.stringify(data));
 	}catch (e){
-		alert('新しく開くタブで　www4078uo.sakura.ne.jp にアクセスする（安全ではありません） を押してください');
+		alert("新しく開くタブで　www4078uo.sakura.ne.jp にアクセスする（安全ではありません） を押して白い画面を表示してください。その後、この画面を再読み込みしてください。");
 		window.open('https://www4078uo.sakura.ne.jp/shining_live_api/api.php');
-		location.reload();
 	}
 }
