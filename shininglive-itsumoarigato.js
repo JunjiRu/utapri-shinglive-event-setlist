@@ -38,7 +38,8 @@ function setCurrentDatetime(){
 
 function setEndDatetime(){
 	var datetime = new Date();
-	datetime.setDate(datetime.getDate() + 7);
+	var event_last_days = parseInt(document.getElementById('event_last').value);
+	datetime.setDate(datetime.getDate() + event_last_days);
 	datetime.setHours(14);
 	datetime.setMinutes(0);
 	document.getElementById('datetime_end').value = datetime.toLocaleString().slice(0, -3);
@@ -93,6 +94,8 @@ function calcOthers(){
 	for(var boost=0;boost<=song_count;boost++){
 		// 一周獲得ポイント
 		var point = 0;
+		point += parseInt(document.getElementById('point_mission').value);
+		point += parseInt(document.getElementById('point_clear').value);
 		for(var song=1;song<=song_count;song++){
 			if(boost !== 0){
 				point += parseInt(document.getElementById('row'+song+'_'+boost).innerHTML);
@@ -184,7 +187,22 @@ function copy_state_text(){
 	document.execCommand("copy");
 }
 
+function get_song_title(){
+	var data = {};
+	var set_list_url = 'https://junjiru.github.io/utapri-shininglive-event/set_list.txt?date=' + new Date().getTime();
+	var xmlHttpRequest = new XMLHttpRequest();
+	xmlHttpRequest.onreadystatechange = function(){
+		var arr = this.responseText.split("\n");
+		for(var i=1;i<=song_count;i++){
+			document.getElementById('song_title'+i).value = arr[i-1];
+		}
+	};
+	xmlHttpRequest.open('GET', set_list_url, false);
+	xmlHttpRequest.send(JSON.stringify(data));
+}
+
 function set_save_data_api(){
+/*
 	get_state_text();
 	var data = {
 		'type': 'set',
@@ -201,9 +219,11 @@ function set_save_data_api(){
 	};
 	xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
 	xmlHttpRequest.send(JSON.stringify(data));
+*/
 }
 
 function get_save_data_api(){
+/*
 	var data = {
 		'type': 'get',
 		'name': document.getElementById('db_name').value,
@@ -216,37 +236,19 @@ function get_save_data_api(){
 		document.getElementById('state_text').value = this.responseText;
 		set_state_text();
 	};
-	xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
+	xmlHttpRequest.open('POST', 'https://domain/shining_live_api/api.php', false);
 	xmlHttpRequest.send(JSON.stringify(data));
-}
-
-function get_song_title(){
-	var data = {
-		'type': 'get_songs'
-	};
-
-	var xmlHttpRequest = new XMLHttpRequest();
-	xmlHttpRequest.onreadystatechange = function(){
-		var json = JSON.parse(this.responseText);
-		for(var i=1;i<=song_count;i++){
-			document.getElementById('song_title'+i).value = json[i-1]['song_title'];
-		}
-	};
-	xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
-	xmlHttpRequest.send(JSON.stringify(data));
+*/
 }
 
 function log_access(){
+/*
 	var data = {
 		'type': 'access'
 	};
 
-	try{
-		var xmlHttpRequest = new XMLHttpRequest();
-		xmlHttpRequest.open('POST', 'https://www4078uo.sakura.ne.jp/shining_live_api/api.php', false);
-		xmlHttpRequest.send(JSON.stringify(data));
-	}catch (e){
-		alert("新しく開くタブでエラー画面が出ますが、内容を確認して白い画面を表示してください。その後、この画面を再読み込みしてください。");
-		window.open('https://www4078uo.sakura.ne.jp/shining_live_api/api.php', 'newtab');
-	}
+	var xmlHttpRequest = new XMLHttpRequest();
+	xmlHttpRequest.open('POST', 'https://domain/shining_live_api/api.php', false);
+	xmlHttpRequest.send(JSON.stringify(data));
+*/
 }
