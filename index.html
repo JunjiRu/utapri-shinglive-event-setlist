@@ -56,17 +56,16 @@
 				<td>イベント終了日時:</td>
 				<td colspan="3">
 					<input id="datetime_end" class="datetime" type="text" value="2020/09/29 14:00" onChange="calcLastTime(false);">
-					<select id="event_last">
-						<option value="7">7日後</option>
-						<option value="6">6日後</option>
-						<option value="5">5日後</option>
-						<option value="4">4日後</option>
-						<option value="3">3日後</option>
-						<option value="2">2日後</option>
-						<option value="1">1日後</option>
-						<option value="0">本日</option>
+					<select id="event_last" onChange="setEndDatetime();">
+						<option value="7">7日後の日付を設定</option>
+						<option value="6">6日後の日付を設定</option>
+						<option value="5">5日後の日付を設定</option>
+						<option value="4">4日後の日付を設定</option>
+						<option value="3">3日後の日付を設定</option>
+						<option value="2">2日後の日付を設定</option>
+						<option value="1">1日後の日付を設定</option>
+						<option value="0">本日の日付を設定</option>
 					</select>
-					<input type="button" value="日付を設定" onClick="setEndDatetime();">
 				</td>
 			</tr>
 			<tr class="important_info">
