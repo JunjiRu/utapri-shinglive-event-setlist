@@ -18,6 +18,7 @@ window.onload = function(){
 };
 
 function init(){
+	setEndDatetime();
 	calcLastPoint();
 	setCurrentDatetime();
 	calcPointEfficiency();
