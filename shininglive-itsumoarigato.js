@@ -18,9 +18,9 @@ window.onload = function(){
 };
 
 function init(){
-	setEndDatetime();
 	calcLastPoint();
 	setCurrentDatetime();
+	setEndDatetime();
 	calcPointEfficiency();
 }
 
@@ -29,6 +29,7 @@ function calcLastPoint(){
 	var current = document.getElementById('point_current').value;
 	var last = target - current;
 	document.getElementById('point_last').innerHTML = last;
+	calcPointEfficiency();
 }
 
 function setCurrentDatetime(){
@@ -63,6 +64,7 @@ function calcLastTime(get_last_days){
 	}
 	document.getElementById('last_time').innerHTML = days_hours_mins +'('+hours_mins+')';
 	document.getElementById('last_recovery_lp').innerHTML = Math.floor(mins / lp_recovery_duration);
+	calcPointEfficiency();
 }
 
 function setDividedValue(id){
@@ -86,6 +88,7 @@ function calcPointEfficiency(){
 		}
 	}
 	calcOthers();
+	get_state_text();
 }
 
 function calcOthers(){
