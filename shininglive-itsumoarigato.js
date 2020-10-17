@@ -19,9 +19,7 @@ window.onload = function(){
 
 function init(){
 	calcLastPoint();
-	setCurrentDatetime();
 	setEndDatetime();
-	calcPointEfficiency();
 }
 
 function calcLastPoint(){
@@ -29,10 +27,10 @@ function calcLastPoint(){
 	var current = document.getElementById('point_current').value;
 	var last = target - current;
 	document.getElementById('point_last').innerHTML = last;
-	calcPointEfficiency();
+	updateAnyElement();
 }
 
-function setCurrentDatetime(){
+function updateAnyElement(){
 	var datetime = new Date();
 	document.getElementById('datetime_current').innerHTML = datetime.toLocaleString().slice(0, -3);
 	calcLastTime(false);
@@ -45,7 +43,7 @@ function setEndDatetime(){
 	datetime.setHours(14);
 	datetime.setMinutes(0);
 	document.getElementById('datetime_end').value = datetime.toLocaleString().slice(0, -3);
-	calcLastTime(false);
+	updateAnyElement();
 }
 
 function calcLastTime(get_last_days){
@@ -70,7 +68,7 @@ function calcLastTime(get_last_days){
 function setDividedValue(id){
 	var value = document.getElementById(id).value;
 	document.getElementById(id).value = Math.floor(value / max_boost_magnification);
-	calcPointEfficiency();
+	updateAnyElement();
 }
 
 function calcPointEfficiency(){
@@ -182,7 +180,7 @@ function set_state_text(){
 	for(var i=0;i<count;i++){
 		document.getElementById(user_input_field[i]).value = json[user_input_field[i]];
 	}
-	init();
+	calcLastPoint();
 }
 
 function copy_state_text(){
