@@ -6,7 +6,7 @@
 		<script type="text/javascript" src="./shininglive-itsumoarigato.js"></script>
 		<style>
 			div, table, span, input{
-				font-size: 13px;
+				font-size: 12px;
 			}
 			input.datetime {
 				width: 110px;
@@ -38,7 +38,7 @@
 		<table>
 			<tr>
 				<td>目標ポイント:</td>
-				<td><input id="point_target" class="score_total" value="220000" type="text" onChange="calcLastPoint()"></td>
+				<td><input id="point_target" class="score_total" value="3900000" type="text" onChange="calcLastPoint()"></td>
 				<td class="important_info">目標まで残り:</td><td class="important_info"><span id="point_last"></span>pt</td>
 			</tr>
 			<tr>
@@ -55,8 +55,8 @@
 			<tr>
 				<td>イベント終了日時:</td>
 				<td colspan="3">
-					<input id="datetime_end" class="datetime" type="text" value="2020/09/29 14:00" onChange="calcLastTime(false);">
-					<select id="event_last" onChange="setEndDatetime();">
+					<input id="datetime_end" class="datetime" type="text" value="2023/12/26 13:59" onChange="calcLastTime(false);" disabled>
+<!--					<select id="event_last" onChange="setEndDatetime();">
 						<option value="7">7日後の日付を設定</option>
 						<option value="6">6日後の日付を設定</option>
 						<option value="5">5日後の日付を設定</option>
@@ -66,6 +66,7 @@
 						<option value="1">1日後の日付を設定</option>
 						<option value="0">本日の日付を設定</option>
 					</select>
+-->
 				</td>
 			</tr>
 			<tr class="important_info">
@@ -78,100 +79,196 @@
 
 		<table class="point_table">
 			<tr>
-				<td><input type="button" value="曲名自動入力" onClick="get_song_title();"></td>
-				<td colspan="8">最高効率は全体が赤くなります</td>
+				<td><!-- <input type="button" value="曲名自動入力" onClick="get_song_title();"> --></td>
+				<td colspan="20">最高効率は全体が赤くなります</td>
 			</tr>
 			<tr>
-				<td>ミッション加点</td><td colspan="8"><input id="point_mission" class="score" value="450" type="text" onChange="updateAnyElement();"></td>
+				<td>ミッション加点</td><td colspan="20"><input id="point_mission" class="score" value="450" type="text" onChange="updateAnyElement();"></td>
 			</tr>
 			<tr>
-				<td>クリア加点</td><td colspan="8"><input id="point_clear" class="score" value="500" type="text" disabled></td>
+				<td>クリア加点</td><td colspan="20"><input id="point_clear" class="score" value="500" type="text" disabled></td>
 			</tr>
 			<tr>
-				<td>ブースト曲数</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+				<td>ブースト曲数</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
 			</tr>
 			<tr>
-				<td><input id="song_title1" class="song_title" type="text" placeholder="1曲目タイトル"></td>
+				<td><input id="song_title1" class="song_title" type="text" placeholder="1曲目タイトル" value="Shining☆Romance"></td>
 				<td>
-					<input id="row1_0" class="score" value="600" type="text" onChange="updateAnyElement();">
+					<input id="row1_0" class="score" value="750" type="text" onChange="updateAnyElement();">
 					<input type="button" value="1/3" onClick="setDividedValue('row1_0');">
 				</td>
-				<td id="row1_1"></td><td id="row1_2"></td><td id="row1_3"></td><td id="row1_4"></td><td id="row1_5"></td><td id="row1_6"></td><td id="row1_7"></td>
+				<td id="row1_1"></td><td id="row1_2"></td><td id="row1_3"></td><td id="row1_4"></td><td id="row1_5"></td><td id="row1_6"></td><td id="row1_7"></td><td id="row1_8"></td><td id="row1_9"></td><td id="row1_10"></td><td id="row1_11"></td><td id="row1_12"></td><td id="row1_13"></td><td id="row1_14"></td><td id="row1_15"></td><td id="row1_16"></td><td id="row1_17"></td><td id="row1_18"></td><td id="row1_19"></td>
 			</tr>
 			<tr>
-				<td><input id="song_title2" class="song_title" type="text" placeholder="2曲目タイトル"></td>
+				<td><input id="song_title2" class="song_title" type="text" placeholder="2曲目タイトル" value="FORCE LIVE"></td>
 				<td>
-					<input id="row2_0" class="score" value="700" type="text" onChange="updateAnyElement();">
+					<input id="row2_0" class="score" value="800" type="text" onChange="updateAnyElement();">
 					<input type="button" value="1/3" onClick="setDividedValue('row2_0');">
 				</td>
-				<td id="row2_1"></td><td id="row2_2"></td><td id="row2_3"></td><td id="row2_4"></td><td id="row2_5"></td><td id="row2_6"></td><td id="row2_7"></td>
+				<td id="row2_1"></td><td id="row2_2"></td><td id="row2_3"></td><td id="row2_4"></td><td id="row2_5"></td><td id="row2_6"></td><td id="row2_7"></td><td id="row2_8"></td><td id="row2_9"></td><td id="row2_10"></td><td id="row2_11"></td><td id="row2_12"></td><td id="row2_13"></td><td id="row2_14"></td><td id="row2_15"></td><td id="row2_16"></td><td id="row2_17"></td><td id="row2_18"></td><td id="row2_19"></td>
 			</tr>
 			<tr>
-				<td><input id="song_title3" class="song_title" type="text" placeholder="3曲目タイトル"></td>
+				<td><input id="song_title3" class="song_title" type="text" placeholder="3曲目タイトル" value="DAY DREAM"></td>
 				<td>
-					<input id="row3_0" class="score" value="800" type="text" onChange="updateAnyElement();">
+					<input id="row3_0" class="score" value="850" type="text" onChange="updateAnyElement();">
 					<input type="button" value="1/3" onClick="setDividedValue('row3_0');">
 				</td>
-				<td id="row3_1"></td><td id="row3_2"></td><td id="row3_3"></td><td id="row3_4"></td><td id="row3_5"></td><td id="row3_6"></td><td id="row3_7"></td>
+				<td id="row3_1"></td><td id="row3_2"></td><td id="row3_3"></td><td id="row3_4"></td><td id="row3_5"></td><td id="row3_6"></td><td id="row3_7"></td><td id="row3_8"></td><td id="row3_9"></td><td id="row3_10"></td><td id="row3_11"></td><td id="row3_12"></td><td id="row3_13"></td><td id="row3_14"></td><td id="row3_15"></td><td id="row3_16"></td><td id="row3_17"></td><td id="row3_18"></td><td id="row3_19"></td>
 			</tr>
 			<tr>
-				<td><input id="song_title4" class="song_title" type="text" placeholder="4曲目タイトル"></td>
+				<td><input id="song_title4" class="song_title" type="text" placeholder="4曲目タイトル" value="NIGHT DREAM"></td>
 				<td>
 					<input id="row4_0" class="score" value="900" type="text" onChange="updateAnyElement();">
 					<input type="button" value="1/3" onClick="setDividedValue('row4_0');">
 				</td>
-				<td id="row4_1"></td><td id="row4_2"></td><td id="row4_3"></td><td id="row4_4"></td><td id="row4_5"></td><td id="row4_6"></td><td id="row4_7"></td>
+				<td id="row4_1"></td><td id="row4_2"></td><td id="row4_3"></td><td id="row4_4"></td><td id="row4_5"></td><td id="row4_6"></td><td id="row4_7"></td><td id="row4_8"></td><td id="row4_9"></td><td id="row4_10"></td><td id="row4_11"></td><td id="row4_12"></td><td id="row4_13"></td><td id="row4_14"></td><td id="row4_15"></td><td id="row4_16"></td><td id="row4_17"></td><td id="row4_18"></td><td id="row4_19"></td>
 			</tr>
 			<tr>
-				<td><input id="song_title5" class="song_title" type="text" placeholder="5曲目タイトル"></td>
+				<td><input id="song_title5" class="song_title" type="text" placeholder="5曲目タイトル" value="WONDER☆ROND"></td>
 				<td>
-					<input id="row5_0" class="score" value="1000" type="text" onChange="updateAnyElement();">
+					<input id="row5_0" class="score" value="950" type="text" onChange="updateAnyElement();">
 					<input type="button" value="1/3" onClick="setDividedValue('row5_0');">
 				</td>
-				<td id="row5_1"></td><td id="row5_2"></td><td id="row5_3"></td><td id="row5_4"></td><td id="row5_5"></td><td id="row5_6"></td><td id="row5_7"></td>
+				<td id="row5_1"></td><td id="row5_2"></td><td id="row5_3"></td><td id="row5_4"></td><td id="row5_5"></td><td id="row5_6"></td><td id="row5_7"></td><td id="row5_8"></td><td id="row5_9"></td><td id="row5_10"></td><td id="row5_11"></td><td id="row5_12"></td><td id="row5_13"></td><td id="row5_14"></td><td id="row5_15"></td><td id="row5_16"></td><td id="row5_17"></td><td id="row5_18"></td><td id="row5_19"></td>
 			</tr>
 			<tr>
-				<td><input id="song_title6" class="song_title" type="text" placeholder="6曲目タイトル"></td>
+				<td><input id="song_title6" class="song_title" type="text" placeholder="6曲目タイトル" value="DANCING OVER NIGHT"></td>
 				<td>
-					<input id="row6_0" class="score" value="1100" type="text" onChange="updateAnyElement();">
+					<input id="row6_0" class="score" value="950" type="text" onChange="updateAnyElement();">
 					<input type="button" value="1/3" onClick="setDividedValue('row6_0');">
 				</td>
-				<td id="row6_1"></td><td id="row6_2"></td><td id="row6_3"></td><td id="row6_4"></td><td id="row6_5"></td><td id="row6_6"></td><td id="row6_7"></td>
+				<td id="row6_1"></td><td id="row6_2"></td><td id="row6_3"></td><td id="row6_4"></td><td id="row6_5"></td><td id="row6_6"></td><td id="row6_7"></td><td id="row6_8"></td><td id="row6_9"></td><td id="row6_10"></td><td id="row6_11"></td><td id="row6_12"></td><td id="row6_13"></td><td id="row6_14"></td><td id="row6_15"></td><td id="row6_16"></td><td id="row6_17"></td><td id="row6_18"></td><td id="row6_19"></td>
 			</tr>
 			<tr>
-				<td><input id="song_title7" class="song_title" type="text" placeholder="7曲目タイトル"></td>
+				<td><input id="song_title7" class="song_title" type="text" placeholder="7曲目タイトル" value="マジLOVEレジェンドスター"></td>
 				<td>
-					<input id="row7_0" class="score" value="1200" type="text" onChange="updateAnyElement();">
+					<input id="row7_0" class="score" value="1000" type="text" onChange="updateAnyElement();">
 					<input type="button" value="1/3" onClick="setDividedValue('row7_0');">
 				</td>
-				<td id="row7_1"></td><td id="row7_2"></td><td id="row7_3"></td><td id="row7_4"></td><td id="row7_5"></td><td id="row7_6"></td><td id="row7_7"></td>
+				<td id="row7_1"></td><td id="row7_2"></td><td id="row7_3"></td><td id="row7_4"></td><td id="row7_5"></td><td id="row7_6"></td><td id="row7_7"></td><td id="row7_8"></td><td id="row7_9"></td><td id="row7_10"></td><td id="row7_11"></td><td id="row7_12"></td><td id="row7_13"></td><td id="row7_14"></td><td id="row7_15"></td><td id="row7_16"></td><td id="row7_17"></td><td id="row7_18"></td><td id="row7_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title8" class="song_title" type="text" placeholder="8曲目タイトル" value="KIZUNA"></td>
+				<td>
+					<input id="row8_0" class="score" value="1050" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row8_0');">
+				</td>
+				<td id="row8_1"></td><td id="row8_2"></td><td id="row8_3"></td><td id="row8_4"></td><td id="row8_5"></td><td id="row8_6"></td><td id="row8_7"></td><td id="row8_8"></td><td id="row8_9"></td><td id="row8_10"></td><td id="row8_11"></td><td id="row8_12"></td><td id="row8_13"></td><td id="row8_14"></td><td id="row8_15"></td><td id="row8_16"></td><td id="row8_17"></td><td id="row8_18"></td><td id="row8_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title9" class="song_title" type="text" placeholder="9曲目タイトル" value="Grateful friends, Graceful ways"></td>
+				<td>
+					<input id="row9_0" class="score" value="1100" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row9_0');">
+				</td>
+				<td id="row9_1"></td><td id="row9_2"></td><td id="row9_3"></td><td id="row9_4"></td><td id="row9_5"></td><td id="row9_6"></td><td id="row9_7"></td><td id="row9_8"></td><td id="row9_9"></td><td id="row9_10"></td><td id="row9_11"></td><td id="row9_12"></td><td id="row9_13"></td><td id="row9_14"></td><td id="row9_15"></td><td id="row9_16"></td><td id="row9_17"></td><td id="row9_18"></td><td id="row9_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title10" class="song_title" type="text" placeholder="10曲目タイトル" value="Ready Steady Race!"></td>
+				<td>
+					<input id="row10_0" class="score" value="1150" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row10_0');">
+				</td>
+				<td id="row10_1"></td><td id="row10_2"></td><td id="row10_3"></td><td id="row10_4"></td><td id="row10_5"></td><td id="row10_6"></td><td id="row10_7"></td><td id="row10_8"></td><td id="row10_9"></td><td id="row10_10"></td><td id="row10_11"></td><td id="row10_12"></td><td id="row10_13"></td><td id="row10_14"></td><td id="row10_15"></td><td id="row10_16"></td><td id="row10_17"></td><td id="row10_18"></td><td id="row10_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title11" class="song_title" type="text" placeholder="11曲目タイトル" value="Sunshine melody"></td>
+				<td>
+					<input id="row11_0" class="score" value="1200" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row11_0');">
+				</td>
+				<td id="row11_1"></td><td id="row11_2"></td><td id="row11_3"></td><td id="row11_4"></td><td id="row11_5"></td><td id="row11_6"></td><td id="row11_7"></td><td id="row11_8"></td><td id="row11_9"></td><td id="row11_10"></td><td id="row11_11"></td><td id="row11_12"></td><td id="row11_13"></td><td id="row11_14"></td><td id="row11_15"></td><td id="row11_16"></td><td id="row11_17"></td><td id="row11_18"></td><td id="row11_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title12" class="song_title" type="text" placeholder="12曲目タイトル" value="Stars From Microcosmos"></td>
+				<td>
+					<input id="row12_0" class="score" value="1250" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row12_0');">
+				</td>
+				<td id="row12_1"></td><td id="row12_2"></td><td id="row12_3"></td><td id="row12_4"></td><td id="row12_5"></td><td id="row12_6"></td><td id="row12_7"></td><td id="row12_8"></td><td id="row12_9"></td><td id="row12_10"></td><td id="row12_11"></td><td id="row12_12"></td><td id="row12_13"></td><td id="row12_14"></td><td id="row12_15"></td><td id="row12_16"></td><td id="row12_17"></td><td id="row12_18"></td><td id="row12_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title13" class="song_title" type="text" placeholder="13曲目タイトル" value="月に夢 哀にあなた"></td>
+				<td>
+					<input id="row13_0" class="score" value="1300" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row13_0');">
+				</td>
+				<td id="row13_1"></td><td id="row13_2"></td><td id="row13_3"></td><td id="row13_4"></td><td id="row13_5"></td><td id="row13_6"></td><td id="row13_7"></td><td id="row13_8"></td><td id="row13_9"></td><td id="row13_10"></td><td id="row13_11"></td><td id="row13_12"></td><td id="row13_13"></td><td id="row13_14"></td><td id="row13_15"></td><td id="row13_16"></td><td id="row13_17"></td><td id="row13_18"></td><td id="row13_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title14" class="song_title" type="text" placeholder="14曲目タイトル" value="イリュージョニスト"></td>
+				<td>
+					<input id="row14_0" class="score" value="1350" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row14_0');">
+				</td>
+				<td id="row14_1"></td><td id="row14_2"></td><td id="row14_3"></td><td id="row14_4"></td><td id="row14_5"></td><td id="row14_6"></td><td id="row14_7"></td><td id="row14_8"></td><td id="row14_9"></td><td id="row14_10"></td><td id="row14_11"></td><td id="row14_12"></td><td id="row14_13"></td><td id="row14_14"></td><td id="row14_15"></td><td id="row14_16"></td><td id="row14_17"></td><td id="row14_18"></td><td id="row14_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title15" class="song_title" type="text" placeholder="15曲目タイトル" value="セイクリッドペアーズ"></td>
+				<td>
+					<input id="row15_0" class="score" value="1400" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row15_0');">
+				</td>
+				<td id="row15_1"></td><td id="row15_2"></td><td id="row15_3"></td><td id="row15_4"></td><td id="row15_5"></td><td id="row15_6"></td><td id="row15_7"></td><td id="row15_8"></td><td id="row15_9"></td><td id="row15_10"></td><td id="row15_11"></td><td id="row15_12"></td><td id="row15_13"></td><td id="row15_14"></td><td id="row15_15"></td><td id="row15_16"></td><td id="row15_17"></td><td id="row15_18"></td><td id="row15_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title16" class="song_title" type="text" placeholder="16曲目タイトル" value="HUG SONG"></td>
+				<td>
+					<input id="row16_0" class="score" value="1450" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row16_0');">
+				</td>
+				<td id="row16_1"></td><td id="row16_2"></td><td id="row16_3"></td><td id="row16_4"></td><td id="row16_5"></td><td id="row16_6"></td><td id="row16_7"></td><td id="row16_8"></td><td id="row16_9"></td><td id="row16_10"></td><td id="row16_11"></td><td id="row16_12"></td><td id="row16_13"></td><td id="row16_14"></td><td id="row16_15"></td><td id="row16_16"></td><td id="row16_17"></td><td id="row16_18"></td><td id="row16_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title17" class="song_title" type="text" placeholder="17曲目タイトル" value="You’re my life"></td>
+				<td>
+					<input id="row17_0" class="score" value="1500" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row17_0');">
+				</td>
+				<td id="row17_1"></td><td id="row17_2"></td><td id="row17_3"></td><td id="row17_4"></td><td id="row17_5"></td><td id="row17_6"></td><td id="row17_7"></td><td id="row17_8"></td><td id="row17_9"></td><td id="row17_10"></td><td id="row17_11"></td><td id="row17_12"></td><td id="row17_13"></td><td id="row17_14"></td><td id="row17_15"></td><td id="row17_16"></td><td id="row17_17"></td><td id="row17_18"></td><td id="row17_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title18" class="song_title" type="text" placeholder="18曲目タイトル" value="サンキュ"></td>
+				<td>
+					<input id="row18_0" class="score" value="1550" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row18_0');">
+				</td>
+				<td id="row18_1"></td><td id="row18_2"></td><td id="row18_3"></td><td id="row18_4"></td><td id="row18_5"></td><td id="row18_6"></td><td id="row18_7"></td><td id="row18_8"></td><td id="row18_9"></td><td id="row18_10"></td><td id="row18_11"></td><td id="row18_12"></td><td id="row18_13"></td><td id="row18_14"></td><td id="row18_15"></td><td id="row18_16"></td><td id="row18_17"></td><td id="row18_18"></td><td id="row18_19"></td>
+			</tr>
+			<tr>
+				<td><input id="song_title19" class="song_title" type="text" placeholder="19曲目タイトル" value="Welcome to UTA☆PRI world!!"></td>
+				<td>
+					<input id="row19_0" class="score" value="1650" type="text" onChange="updateAnyElement();">
+					<input type="button" value="1/3" onClick="setDividedValue('row19_0');">
+				</td>
+				<td id="row19_1"></td><td id="row19_2"></td><td id="row19_3"></td><td id="row19_4"></td><td id="row19_5"></td><td id="row19_6"></td><td id="row19_7"></td><td id="row19_8"></td><td id="row19_9"></td><td id="row19_10"></td><td id="row19_11"></td><td id="row19_12"></td><td id="row19_13"></td><td id="row19_14"></td><td id="row19_15"></td><td id="row19_16"></td><td id="row19_17"></td><td id="row19_18"></td><td id="row19_19"></td>
 			</tr>
 			<tr class="important_info">
-				<td>一周獲得pt</td><td id="get_point_0"></td><td id="get_point_1"></td><td id="get_point_2"></td><td id="get_point_3"></td><td id="get_point_4"></td><td id="get_point_5"></td><td id="get_point_6"></td><td id="get_point_7"></td>
+				<td>一周獲得pt</td><td id="get_point_0"></td><td id="get_point_1"></td><td id="get_point_2"></td><td id="get_point_3"></td><td id="get_point_4"></td><td id="get_point_5"></td><td id="get_point_6"></td><td id="get_point_7"></td><td id="get_point_8"></td><td id="get_point_9"></td><td id="get_point_10"></td><td id="get_point_11"></td><td id="get_point_12"></td><td id="get_point_13"></td><td id="get_point_14"></td><td id="get_point_15"></td><td id="get_point_16"></td><td id="get_point_17"></td><td id="get_point_18"></td><td id="get_point_19"></td>
 			</tr>
 			<tr>
-				<td>一周消費LP</td><td id="cost_0"></td><td id="cost_1"></td><td id="cost_2"></td><td id="cost_3"></td><td id="cost_4"></td><td id="cost_5"></td><td id="cost_6"></td><td id="cost_7"></td>
+				<td>一周消費LP</td><td id="cost_0"></td><td id="cost_1"></td><td id="cost_2"></td><td id="cost_3"></td><td id="cost_4"></td><td id="cost_5"></td><td id="cost_6"></td><td id="cost_7"></td><td id="cost_8"></td><td id="cost_9"></td><td id="cost_10"></td><td id="cost_11"></td><td id="cost_12"></td><td id="cost_13"></td><td id="cost_14"></td><td id="cost_15"></td><td id="cost_16"></td><td id="cost_17"></td><td id="cost_18"></td><td id="cost_19"></td>
 			</tr>
 			<tr>
-				<td>効率(合計pt/LP)</td><td id="eff_0"></td><td id="eff_1"></td><td id="eff_2"></td><td id="eff_3"></td><td id="eff_4"></td><td id="eff_5"></td><td id="eff_6"></td><td id="eff_7"></td>
+				<td>効率(合計pt/LP)</td><td id="eff_0"></td><td id="eff_1"></td><td id="eff_2"></td><td id="eff_3"></td><td id="eff_4"></td><td id="eff_5"></td><td id="eff_6"></td><td id="eff_7"></td><td id="eff_8"></td><td id="eff_9"></td><td id="eff_10"></td><td id="eff_11"></td><td id="eff_12"></td><td id="eff_13"></td><td id="eff_14"></td><td id="eff_15"></td><td id="eff_16"></td><td id="eff_17"></td><td id="eff_18"></td><td id="eff_19"></td>
 			</tr>
 			<tr class="important_info">
-				<td>必要残り周回数</td><td id="last_round_0"></td><td id="last_round_1"></td><td id="last_round_2"></td><td id="last_round_3"></td><td id="last_round_4"></td><td id="last_round_5"></td><td id="last_round_6"></td><td id="last_round_7"></td>
+				<td>必要残り周回数</td><td id="last_round_0"></td><td id="last_round_1"></td><td id="last_round_2"></td><td id="last_round_3"></td><td id="last_round_4"></td><td id="last_round_5"></td><td id="last_round_6"></td><td id="last_round_7"></td><td id="last_round_8"></td><td id="last_round_9"></td><td id="last_round_10"></td><td id="last_round_11"></td><td id="last_round_12"></td><td id="last_round_13"></td><td id="last_round_14"></td><td id="last_round_15"></td><td id="last_round_16"></td><td id="last_round_17"></td><td id="last_round_18"></td><td id="last_round_19"></td>
 			</tr>
 			<tr>
-				<td>必要LP(概算)</td><td id="last_lp_0"></td><td id="last_lp_1"></td><td id="last_lp_2"></td><td id="last_lp_3"></td><td id="last_lp_4"></td><td id="last_lp_5"></td><td id="last_lp_6"></td><td id="last_lp_7"></td>
+				<td>必要LP(概算)</td><td id="last_lp_0"></td><td id="last_lp_1"></td><td id="last_lp_2"></td><td id="last_lp_3"></td><td id="last_lp_4"></td><td id="last_lp_5"></td><td id="last_lp_6"></td><td id="last_lp_7"></td><td id="last_lp_8"></td><td id="last_lp_9"></td><td id="last_lp_10"></td><td id="last_lp_11"></td><td id="last_lp_12"></td><td id="last_lp_13"></td><td id="last_lp_14"></td><td id="last_lp_15"></td><td id="last_lp_16"></td><td id="last_lp_17"></td><td id="last_lp_18"></td><td id="last_lp_19"></td>
 			</tr>
 			<tr>
-				<td>要アイテム回復</td><td id="need_item_0"></td><td id="need_item_1"></td><td id="need_item_2"></td><td id="need_item_3"></td><td id="need_item_4"></td><td id="need_item_5"></td><td id="need_item_6"></td><td id="need_item_7"></td>
+				<td>要アイテム回復</td><td id="need_item_0"></td><td id="need_item_1"></td><td id="need_item_2"></td><td id="need_item_3"></td><td id="need_item_4"></td><td id="need_item_5"></td><td id="need_item_6"></td><td id="need_item_7"></td><td id="need_item_8"></td><td id="need_item_9"></td><td id="need_item_10"></td><td id="need_item_11"></td><td id="need_item_12"></td><td id="need_item_13"></td><td id="need_item_14"></td><td id="need_item_15"></td><td id="need_item_16"></td><td id="need_item_17"></td><td id="need_item_18"></td><td id="need_item_19"></td>
 			</tr>
 			<tr class="important_info">
-				<td>今日から平均周回</td><td id="ave_round_type1_0"></td><td id="ave_round_type1_1"></td><td id="ave_round_type1_2"></td><td id="ave_round_type1_3"></td><td id="ave_round_type1_4"></td><td id="ave_round_type1_5"></td><td id="ave_round_type1_6"></td><td id="ave_round_type1_7"></td>
+				<td>今日から平均周回</td><td id="ave_round_type1_0"></td><td id="ave_round_type1_1"></td><td id="ave_round_type1_2"></td><td id="ave_round_type1_3"></td><td id="ave_round_type1_4"></td><td id="ave_round_type1_5"></td><td id="ave_round_type1_6"></td><td id="ave_round_type1_7"></td><td id="ave_round_type1_8"></td><td id="ave_round_type1_9"></td><td id="ave_round_type1_10"></td><td id="ave_round_type1_11"></td><td id="ave_round_type1_12"></td><td id="ave_round_type1_13"></td><td id="ave_round_type1_14"></td><td id="ave_round_type1_15"></td><td id="ave_round_type1_16"></td><td id="ave_round_type1_17"></td><td id="ave_round_type1_18"></td><td id="ave_round_type1_19"></td>
 			</tr>
 			<tr class="important_info">
-				<td>明日から平均周回</td><td id="ave_round_type2_0"></td><td id="ave_round_type2_1"></td><td id="ave_round_type2_2"></td><td id="ave_round_type2_3"></td><td id="ave_round_type2_4"></td><td id="ave_round_type2_5"></td><td id="ave_round_type2_6"></td><td id="ave_round_type2_7"></td>
+				<td>明日から平均周回</td><td id="ave_round_type2_0"></td><td id="ave_round_type2_1"></td><td id="ave_round_type2_2"></td><td id="ave_round_type2_3"></td><td id="ave_round_type2_4"></td><td id="ave_round_type2_5"></td><td id="ave_round_type2_6"></td><td id="ave_round_type2_7"></td><td id="ave_round_type2_8"></td><td id="ave_round_type2_9"></td><td id="ave_round_type2_10"></td><td id="ave_round_type2_11"></td><td id="ave_round_type2_12"></td><td id="ave_round_type2_13"></td><td id="ave_round_type2_14"></td><td id="ave_round_type2_15"></td><td id="ave_round_type2_16"></td><td id="ave_round_type2_17"></td><td id="ave_round_type2_18"></td><td id="ave_round_type2_19"></td>
 			</tr>
 			<tr>
-				<td>明後日から平均周回</td><td id="ave_round_type3_0"></td><td id="ave_round_type3_1"></td><td id="ave_round_type3_2"></td><td id="ave_round_type3_3"></td><td id="ave_round_type3_4"></td><td id="ave_round_type3_5"></td><td id="ave_round_type3_6"></td><td id="ave_round_type3_7"></td>
+				<td>明後日から平均周回</td><td id="ave_round_type3_0"></td><td id="ave_round_type3_1"></td><td id="ave_round_type3_2"></td><td id="ave_round_type3_3"></td><td id="ave_round_type3_4"></td><td id="ave_round_type3_5"></td><td id="ave_round_type3_6"></td><td id="ave_round_type3_7"></td><td id="ave_round_type3_8"></td><td id="ave_round_type3_9"></td><td id="ave_round_type3_10"></td><td id="ave_round_type3_11"></td><td id="ave_round_type3_12"></td><td id="ave_round_type3_13"></td><td id="ave_round_type3_14"></td><td id="ave_round_type3_15"></td><td id="ave_round_type3_16"></td><td id="ave_round_type3_17"></td><td id="ave_round_type3_18"></td><td id="ave_round_type3_19"></td>
 			</tr>
 		</table>
 		<br>
