@@ -1,14 +1,14 @@
-const song_count = 7;
+const song_count = 19;
 const pro_lp = 25;
 const max_boost_magnification = 3;
 const lp_recovery_duration = 3; //unit is minute
 const user_input_field = [
 	'point_target', 'point_current', 'datetime_end', 'point_mission',
-	'song_title1', 'song_title2', 'song_title3', 'song_title4', 'song_title5', 'song_title6', 'song_title7',
-	'row1_0', 'row2_0', 'row3_0', 'row4_0', 'row5_0', 'row6_0', 'row7_0'
+	'song_title1', 'song_title2', 'song_title3', 'song_title4', 'song_title5', 'song_title6', 'song_title7', 'song_title8', 'song_title9', 'song_title10', 'song_title11', 'song_title12', 'song_title13', 'song_title14', 'song_title15', 'song_title16', 'song_title17', 'song_title18', 'song_title19',
+	'row1_0', 'row2_0', 'row3_0', 'row4_0', 'row5_0', 'row6_0', 'row7_0', 'row8_0', 'row9_0', 'row10_0', 'row11_0', 'row12_0', 'row13_0', 'row14_0', 'row15_0', 'row16_0', 'row17_0', 'row18_0', 'row19_0',
 ];
 const important_element = [
-	'row1_', 'row2_', 'row3_', 'row4_', 'row5_', 'row6_', 'row7_',
+	'row1_', 'row2_', 'row3_', 'row4_', 'row5_', 'row6_', 'row7_', 'row8_', 'row9_', 'row10_', 'row11_', 'row12_', 'row13_', 'row14_', 'row15_', 'row16_', 'row17_', 'row18_', 'row19_',
 	'cost_', 'eff_', 'last_lp_', 'need_item_', 'ave_round_type3_'
 ];
 
@@ -37,14 +37,14 @@ function updateAnyElement(){
 }
 
 function setEndDatetime(){
-	var datetime = new Date();
+/*	var datetime = new Date();
 	var event_last_days = parseInt(document.getElementById('event_last').value);
 	datetime.setDate(datetime.getDate() + event_last_days);
 	datetime.setHours(14);
 	datetime.setMinutes(0);
 	document.getElementById('datetime_end').value = datetime.toLocaleString().slice(0, -3);
 	updateAnyElement();
-}
+*/}
 
 function calcLastTime(get_last_days){
 	var current_string = document.getElementById('datetime_current').innerHTML;
